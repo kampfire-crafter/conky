@@ -1,0 +1,103 @@
+
+  
+  conky.config={
+  
+    alignment = 'top_left',
+    border_width = 1,
+    cpu_avg_samples = 4,
+    default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'black',
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = true,
+    use_xft = true,
+    font = 'DejaVu Sans Mono:size=12',
+  
+    gap_x = 30,
+    gap_y = 60,
+  
+    minimum_height = 30,
+    minimum_width = 320,
+    maximum_width = 320,
+  
+  
+    net_avg_samples = 4,
+    no_buffers = false,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    override_utf8_locale = true,
+  
+    own_window=true,
+    own_window_type='desktop',
+    own_window_hints='undecorated, below, sticky, skip_taskbar, skip_pager',
+    own_window_transparent=true,
+    own_window_argb_visual=true,
+    background=false,
+  
+    double_buffer=true,
+  
+    total_run_times = 0,
+    update_interval = 2.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_graph_range = false,
+    xftalpha = 1
+  }
+  
+  conky.text = [[
+${font sans-serif:bold:size=11}SYSTEM_INFO ${hr 2}
+  ${font sans-serif:italic:size=10}Distribution: $alignr $distribution
+  Kernel:$kernel $alignr $machine
+  Hostname:$alignr$nodename
+  Uptime:$alignr$uptime
+  
+${font sans-serif:bold:size=11}CPU ${hr 2}
+  ${font sans-serif:normal:size=10}${exec cat /proc/cpuinfo | grep 'model name' | cut -c 14-55 | uniq } ${font sans-serif:italic:bold:size=10} $alignr ${execi 8 sensors | grep CPU: | cut -c5-24}
+  ${cpugraph cpu}
+  ${font sans-serif:italic:size=10}1: ${cpu cpu1}% $alignc 2: ${cpu cpu2}% $alignr 3: ${cpu cpu3}%
+  4: ${cpu cpu4}% $alignc 5: ${cpu cpu5}% $alignr 6: ${cpu cpu6}%
+  7: ${cpu cpu7}% $alignc 8: ${cpu cpu8}% $alignr 9: ${cpu cpu9}%
+  10: ${cpu cpu10}% $alignc 11: ${cpu cpu11}% $alignr 12: ${cpu cpu12}%
+  13: ${cpu cpu13}% $alignc 14: ${cpu cpu14}% $alignr 15: ${cpu cpu15}%
+  16: ${cpu cpu16}% $alignc 17: ${cpu cpu17}% $alignr 18: ${cpu cpu18}%
+  19: ${cpu cpu19}% $alignc 20: ${cpu cpu20}% $alignr 21: ${cpu cpu21}%
+  
+${font sans-serif:bold:size=11}FILE_SYSTEM ${hr 2} 
+  ${font sans-serif:italic:size=10}/boot $alignc ${fs_used /boot} / ${fs_size /boot} $alignr ${fs_used_perc /boot}%
+  ${fs_bar /boot}
+  ${font sans-serif:italic:size=10}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+  ${fs_bar /}
+  ${font sans-serif:italic:size=10}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
+  ${fs_bar /home}
+  
+${font sans-serif:bold:size=11}MEMORY ${hr 2}
+  ${font sans-serif:italic:size=10}RAM $alignc $mem / $memmax $alignr $memperc%
+  $membar
+  SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
+  ${swapbar}
+  
+${font sans-serif:bold:size=11}TOP PROCESSES ${hr 2}
+  ${font sans-serif:bold:size=10}NAME $alignr MEM%    CPU%
+  ${font sans-serif:italic:size=10}${top name 1} $alignr ${top mem 1} ${top cpu 1}
+  ${top name 2} $alignr ${top mem 2} ${top cpu 2}
+  ${top name 3} $alignr ${top mem 3} ${top cpu 3}
+  ${top name 4} $alignr ${top mem 4} ${top cpu 4}
+  ${top name 5} $alignr ${top mem 5} ${top cpu 5}
+  ${top name 6} $alignr ${top mem 6} ${top cpu 6}
+  ${top name 7} $alignr ${top mem 7} ${top cpu 7}
+  ${top name 8} $alignr ${top mem 8} ${top cpu 8}
+  
+${font sans-serif:bold:size=11}NETWORK ${hr 2}
+  ${font sans-serif:italic:size=10}Interface: $alignr  wlp0s20f3
+  Default Gateway: $alignr $gw_ip
+  IP address: $alignr ${addr wlp0s20f3}
+
+  Down Speed: ${downspeed wlp0s20f3 32,150 000000 ffffff}kb/s $alignr Total: ${totaldown wlp0s20f3}
+  ${downspeedgraph wlp0s20f3}
+  Up Speed: ${upspeed wlp0s20f3 32,150 000000 ffffff}kb/s $alignr Total: ${totalup wlp0s20f3}
+  ${upspeedgraph wlp0s20f3}
+  ]]
