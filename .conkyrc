@@ -49,7 +49,7 @@
   }
   
   conky.text = [[
-${font sans-serif:bold:size=11}SYSTEM_INFO ${hr 2}
+${font sans-serif:bold:size=11}SYSTEM INFO ${hr 2}
   ${font sans-serif:italic:size=10}Distribution: $alignr $distribution
   Kernel:$kernel $alignr $machine
   Hostname:$alignr$nodename
@@ -66,7 +66,7 @@ ${font sans-serif:bold:size=11}CPU ${hr 2}
   16: ${cpu cpu16}% $alignc 17: ${cpu cpu17}% $alignr 18: ${cpu cpu18}%
   19: ${cpu cpu19}% $alignc 20: ${cpu cpu20}% $alignr 21: ${cpu cpu21}%
   
-${font sans-serif:bold:size=11}FILE_SYSTEM ${hr 2} 
+${font sans-serif:bold:size=11}FILE SYSTEM ${hr 2} 
   ${font sans-serif:italic:size=10}/boot $alignc ${fs_used /boot} / ${fs_size /boot} $alignr ${fs_used_perc /boot}%
   ${fs_bar /boot}
   ${font sans-serif:italic:size=10}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
